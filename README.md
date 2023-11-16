@@ -1,3 +1,3 @@
 # unit2
 
-## Repository for Unit 1 CS 2023
+Repository for Unit 1 CS 2023
