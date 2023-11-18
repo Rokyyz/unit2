@@ -11,23 +11,26 @@
 
 ```.py
 
+from matplotlib import pyplot as plt
+
 def produce ():
     x_out = []
     y_out = []
-    x = -10
-    for n in range(100):
-        y = 2*(x+5)**2
-        y_out.append(y)
-        x_out.append(x)
-        x += 0.1
+    for n in range(-10,11):
+        res = 2*((n+5)**2)
+        y_out.append(res)
+        x_out.append(n)
     return y_out, x_out
 
 plt.style.use('ggplot')
 y, x = produce()
+plt.xlabel("Interval", fontsize=20)
+plt.ylabel("$f(x) = 2(x + 5)^{2}$", fontsize = 20)
 plt.plot(x, y,)
 plt.show()
 
 ```
 # 3. proof of work
+<img width="1440" alt="Screenshot 2023-11-19 at 02 31 08" src="https://github.com/Rokyyz/unit2/assets/134658259/b330e194-a11d-4baf-a3dc-62b5fbda2903">
 
-<img width="1440" alt="Screenshot 2023-11-19 at 02 17 32" src="https://github.com/Rokyyz/unit2/assets/134658259/7f6d8fc5-eeb1-4701-b8fa-97f63a8ee19e">
+
