@@ -1,7 +1,7 @@
 # Arduino
 
 ## GIF work of proof
-since the GIF was too big below is an attachment with a QR code that should take you to the video
+since the GIF was too big below is an attachment with a QR code that should take you to the GIF
 
 ![IMG_2671](https://github.com/Rokyyz/unit2/assets/134658259/30efb9ad-a545-4d55-83bb-a110100e0f39)
 
