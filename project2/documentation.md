@@ -1,4 +1,5 @@
-![11e470e9022f4fc5b367429bcbb285bc](https://github.com/comsci-uwc-isak/unit2_2023/assets/53995212/1d14b1d3-ae39-4ef3-8ec9-3329630eacae)
+![weather stat](https://github.com/Rokyyz/unit2/assets/134658259/1443c891-8a7f-4e90-9141-ac65ce82dd78)
+[1]
 
 # Unit 2: A Distributed Weather Station for ISAK
 
@@ -6,7 +7,19 @@
 
 ## Problem definition
 
-A student in an international boarding school has been struggling with sleep quality and is complaining to the school's nurses about disrupted sleep, dry skin, dry throat, and nostrils. This is becoming a common trend on campus as nurses have received multiple similar complaints from other students. The nurses in the Health Center are guessing that this is due to dry air/low humidity levels in the air of the room. The nurses are keen on knowing if this is truly the issue at hand and if true, how to solve this issue. They want to know the precise data of humidity levels during the day as well as the temperature, in order to assess health risks, compare the living conditions of students from different houses, and think of methods to counteract this issue. The data can vary depending on the part of the room so nurses need the data to be collected from different parts of the room (recommended 3 different parts) in order to get the most accurate representation of the humidity and temperature levels.
+A student in an international boarding school has been struggling with sleep quality and is complaining to the school's nurses about disrupted sleep, dry skin, dry throat, and nostrils. This is becoming a common trend on campus as nurses have received multiple similar complaints from other students. The nurses in the Health Center are guessing that this is due to dry air/low humidity levels in the air of the room. The nurses are keen on knowing if this is truly the issue at hand and if true, how to solve this issue. They want to know the precise data of humidity levels during the day as well as the temperature, to assess health risks, compare the living conditions of students from different houses, and think of methods to counteract this issue. The data can vary depending on the part of the room so nurses need the data to be collected from different parts of the room (recommended 3 different parts) to get the most accurate representation of the humidity and temperature levels.
+
+## Success criteria
+
+1. The gathered data and graphs provide a visual representation of the Humidity and Temperature values inside a student's room for 48 hours.
+2. The local data will be recorded using a set of 3 sensors around the dormitory.
+3. The solution provides mathematical modeling for the humidity and temperature levels in the room.
+4. The solution provides an analysis of the humidity and temperature levels in the room using mean, standard deviation, minimum, maximum, and median.
+5. The Local data is stored in a csv file and posted to the remote API server.
+6. Create a prediction of the data for temperature and humidity inside the room for the following 12 hours
+7. Create and present a scientific poster summarizing the visual representations, background research, methods used, model, and analysis.
+
+## Design statement
 
 
 ## Proposed Solution
@@ -74,47 +87,6 @@ _TOK Connection: To what extent does ```the use of data science``` in climate re
 
 A 7 min video demonstrating the proposed solution with narration
 
-#include <DHT11.h>
-#define DHTPIN1 13;
-#define DHTPIN2 11;     // Digital pin connected to the DHT sensor
-#define DHTPIN3 9; 
-#define DHTTYPE DHT11;   // DHT 22  (AM2302), AM2321
-
-DHT11 dht1(DHTPIN1, DHTTYPE);
-DHT11 dht2(DHTPIN2, DHTTYPE);
-DHT11 dht3(DHTPIN3, DHTTYPE);
-void setup() {
- pinMode(12, OUTPUT);//PIN 12 used as a 5V port
- digitalWrite(12,HIGH);
- Serial.begin(9600);
- dht1.begin();
- dht2.begin();
- dht3.begin();
-}
-void loop() {
- delay(5000);
- float h1 = dht1.readHumidity();
- float t1 = dht1.readTemperature();
- float h2 = dht2.readHumidity();
- float t2 = dht2.readTemperature();
- float h3 = dht3.readHumidity();
- float t3 = dht3.readTemperature();
- 
- // Check if any reads failed and exit early (to try again).
- if (isnan(h1) || isnan(h2) || isnan(h3) || isnan(t1)|| isnan(t2) || isnan(t3) ) {
-   Serial.println(F("Failed"));
-   return;
- }
- Serial.print(h1);
- Serial.print(F(","));
- Serial.print(t1);
- Serial.println(F(","));
- Serial.print(h2);
- Serial.print(F(","));
- Serial.print(t2);
- Serial.println(F(","));
- Serial.print(h3);
- Serial.print(F(","));
- Serial.print(t3);
- Serial.println(F(","));
-}
+## Citations 
+[1]
+https://s39920.pcdn.co/wp-content/uploads/2022/04/StormLink-Quick-Deploy-Early-Warning-System-600px.jpeg
