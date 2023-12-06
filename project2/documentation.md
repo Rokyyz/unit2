@@ -12,13 +12,19 @@ A student in an international boarding school has been struggling with sleep qua
 
 ## Success criteria
 
-[^1] The gathered data and graphs provide a visual representation of the Humidity and Temperature values inside a student's room for 48 hours.
+[^1] The gathered data and graphs provide a visual representation of the Humidity and Temperature values inside a student's room for minimum 48 hours.
 [^2] The local data will be recorded using a set of 3 sensors around the dormitory.
-[^3] The solution provides mathematical modeling for the humidity and temperature levels in the room.
-[^4] The solution provides an analysis of the humidity and temperature levels in the room using mean, standard deviation, minimum, maximum, and median.
-[^5] The Local data is stored in a csv file and posted to the remote API server.
+[^3] The solution provides mathematical modeling for the humidity and temperature levels in the room, both linear and non-linear models.
+[^4] The solution provides a comparative analysis of the humidity and temperature levels in the room using mean, standard deviation, minimum, maximum, and median.
+[^5] The Local data is stored in a csv file and posted to the remote API server as a backup.
 [^6] Create a prediction of the data for temperature and humidity inside the room for the following 12 hours
-[^7] Create and present a scientific poster summarizing the visual representations, background research, methods used, model, and analysis.
+[^7] The solution includes a poster summarizing the visual representations, model and analysis created. The poster includes a recommendation about healthy levels for Temperature and Humidity.
+
+_TOK Connection: To what extent does ```the use of data science``` in climate research influence our understanding of environmental issues, and what knowledge questions arise regarding the ```reliability, interpretation, and ethical implications``` of data-driven approaches in addressing climate change_
+
+1. How does our use of technology shape our understanding of the environment
+2. What responsibilities do we have as technologists when it comes to handling personal data related to our living spaces?
+3. What cultural and contextual factors might impact our interpretation of the results, especially when comparing our local readings with those from the campus? 
 
 ## Design statement
 
@@ -38,20 +44,6 @@ Considering the budgetary constrains of the client and the hardware requirements
 [^5]:Tino. “Tino/PyFirmata: Python Interface for the Firmata (Http://Firmata.org/) Protocol. It Is Compliant with Firmata 2.1. Any Help with Updating to 2.2 Is Welcome. the Capability Query Is Implemented, but the Pin State Query Feature Not Yet.” GitHub, https://github.com/tino/pyFirmata. 
 [^6]:Python Geeks. “Advantages of Python: Disadvantages of Python.” Python Geeks, 26 June 2021, https://pythongeeks.org/advantages-disadvantages-of-python/. 
 [^7]: Real Python. “Python vs C++: Selecting the Right Tool for the Job.” Real Python, Real Python, 19 June 2021, https://realpython.com/python-vs-cpp/#memory-management. 
-
-1. The solution provides a visual representation of the Humidity and Temperature values inside a dormitory (Local) and outside the house (Remote) for a period of minimum 48 hours. 
-1. ```[HL]``` The local variables will be measure using a set of 3 sensors around the dormitory.
-2. The solution provides a mathematical modelling for the Humidity and Temperature levels for each Local and Remote locations. ```(SL: linear model)```, ```(HL: non-lineal model)```
-3. The solution provides a comparative analysis for the Humidity and Temperature levels for each Local and Remote locations including mean, standad deviation, minimum, maximum, and median.
-4. ```(SL)```The Local samples are stored in a csv file and ```(HL)``` posted to the remote server as a backup.
-5. The solution provides a prediction for the subsequent 12 hours for both temperature and humidity.
-6. The solution includes a poster summarizing the visual representations, model and analysis created. The poster includes a recommendation about healthy levels for Temperature and Humidity.
-
-_TOK Connection: To what extent does ```the use of data science``` in climate research influence our understanding of environmental issues, and what knowledge questions arise regarding the ```reliability, interpretation, and ethical implications``` of data-driven approaches in addressing climate change_
-
-1. How does our use of technology shape our understanding of the environment
-2. What responsibilities do we have as technologists when it comes to handling personal data related to our living spaces?
-3. What cultural and contextual factors might impact our interpretation of the results, especially when comparing our local readings with those from the campus? 
 
 # Criteria B: Design
 
