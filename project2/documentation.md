@@ -62,12 +62,21 @@ https://learn.adafruit.com/modern-replacements-for-dht11-dht22-sensors/what-are-
 
 # Criteria B: Design
 
-## System Diagram **HL**
+## System Diagrams 
 
-![HL](https://github.com/comsci-uwc-isak/unit2_2023/assets/53995212/4891d5e9-b8ab-46ed-bd75-b606e25e3383)
+# System diagram for gathering data, DHT11 + Arduino UNO connection with computer
 
+<img width="987" alt="Screenshot 2023-12-11 at 20 18 12" src="https://github.com/Rokyyz/unit2/assets/134658259/194524e9-6fd6-4cc6-88e3-6e59bab50c83">
 
-**Fig.1** shows the system diagram for the proposed solution. The indoor variables will be measured using an Arduino and three DHT11 sensors located inside a room. Three sensors are used to determine more precisely the physical values and include measurement uncertainty. The outdoor variables will be requested to the remote server using a GET request to the API of the server at ```192.168.6.153/readings```. The local values are stored in a CSV database locally and a backup copy will be stored in the remote server using the **Weather API**. 
+<img width="987" alt="Screenshot 2023-12-11 at 20 18 41" src="https://github.com/Rokyyz/unit2/assets/134658259/9a954f50-c879-46d3-baab-7ae2b4e9bc98">
+
+<img width="982" alt="Screenshot 2023-12-11 at 20 19 06" src="https://github.com/Rokyyz/unit2/assets/134658259/0efb6c45-9912-44f9-8bc0-4d14f7efcf37">
+
+ # System diagram for gathering data into a CSV file and API server
+
+<img width="943" alt="Screenshot 2023-12-11 at 20 22 00" src="https://github.com/Rokyyz/unit2/assets/134658259/5399887e-c1e7-4abc-b9c7-a70d7b31925b">
+
+<img width="948" alt="Screenshot 2023-12-11 at 20 22 19" src="https://github.com/Rokyyz/unit2/assets/134658259/ae30c1cc-4daf-435a-bc90-626d54c1de7b">
 
 
 ## Record of Tasks
