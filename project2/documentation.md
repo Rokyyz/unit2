@@ -106,6 +106,3 @@ https://learn.adafruit.com/modern-replacements-for-dht11-dht22-sensors/what-are-
 
 A 7 min video demonstrating the proposed solution with narration
 
-## Citations 
-[1]
-https://s39920.pcdn.co/wp-content/uploads/2022/04/StormLink-Quick-Deploy-Early-Warning-System-600px.jpeg
