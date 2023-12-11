@@ -79,12 +79,25 @@ https://learn.adafruit.com/modern-replacements-for-dht11-dht22-sensors/what-are-
 <img width="948" alt="Screenshot 2023-12-11 at 20 22 19" src="https://github.com/Rokyyz/unit2/assets/134658259/ae30c1cc-4daf-435a-bc90-626d54c1de7b">
 
 # List of materials
+
 3 DHT11 sensors
+
+
 1 breadboard
+
+
 1 Arduino UNO
+
+
 2 male connecting wires
+
+
 6 female connecting wires
+
+
 6 long wires
+
+
 1 remote desktop
 
 
