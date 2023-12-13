@@ -207,7 +207,8 @@ In the function we extract the data from the chosen csv file and iterate over it
 
 Thus, we have fulfilled criterion 5
 ## 6. Create a prediction of the data for temperature and humidity inside the room for the following 12 hours
-
+When we created the quadratic model for the mean of the data from the local sensor, we made sure to extend the model's domain by 12 hours, which created our prediction. We did the same for the model for the remote data, but instead extended the domain by 18 hours in order to match the local model. This is because the remote sensor has 6 hours less of data for reasons stated earlier.
+Thus we have fulfilled success criterion 6
 ## 7. The solution includes a poster summarizing the visual representations, model and analysis created. The poster includes a recommendation about healthy levels for Temperature and Humidity
 
 
