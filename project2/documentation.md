@@ -148,6 +148,11 @@ https://learn.adafruit.com/modern-replacements-for-dht11-dht22-sensors/what-are-
 | Non-functional: Performance testing (response time) | Testing if the sensor responds quickly to the running program and see how long it takes for the sensor to register and print out the current temperature and humidity                                                                                                                                                    | 1. Open the Python file containing the code created to print the current temperature and humidity the sensor collects. 2. Monitor the terminal, CSV file to see speed of the data addition and accuracy                                                                                                                                                                                     | The program returns the current temperature and humidity quickly, without pauses and disturbances, and the sensor collects the data without any lag or delay.                                                                                                                   |
 | Non-functional：Code review                         | Reviewing if the code has too many or non-efficient comments, functions, and variable names that would make the code too lengthy, hard to understand and overview, and find ways to make it more concise and structured. There are no inputs, because the review is based on monitoring the quality of the code written. | 1. Involve a person not connected with this project, so they wouldn't be familiar with the code and methods used. 2. Gather feedback from the external developer on which parts are not understandable, too lengthy, can be improved on in terms of efficiency, which names, functions, and variables are not logically made and named.                                                     | The developer gives feedback on the code, which includes comments explaining what are the prominent issues and if some reoccur. That includes the names of variables and the crosscheck if they are simple and it is easy to understand their usage in the program is           |
 
+# Flow Diagrams
+So get_sensor, read_data, smoothing, and qmodel
+
+
+
 # Criteria C: Development
 
 ## List of techniques used
