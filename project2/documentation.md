@@ -150,34 +150,33 @@ https://learn.adafruit.com/modern-replacements-for-dht11-dht22-sensors/what-are-
 
 # Flow Diagrams
 
-
-**Fig 6**
 ![IMG_1971](https://github.com/Rokyyz/unit2/assets/134658259/b3c76488-4bce-491d-ae79-e577c13a0ea8)
+**Fig 6**
+The figure shows the flow diagram used to access the data from the server. The function extracts the data from the sensors with an id indicated. The range of the sensor_ids used while collecting temperature and humidity data during the minimum of 48 hours of data collecting inside the room. By using this function only the relevant data during that time will be used and later on presented, preventing any mistakes in the data correlation between the readings inside and outside the room.
 
 ![IMG_1972](https://github.com/Rokyyz/unit2/assets/134658259/2ab3bbbd-f0f0-4057-89e1-c435547d8a79)
-
-
-
 **Fig 7**
-
+## Explanation of accessing, and adding data from sensors
 
 ![CommSci 9](https://github.com/Rokyyz/unit2/assets/134658259/e3b90504-0645-49c2-b968-0621d472f23a)
-![CommSci 10](https://github.com/Rokyyz/unit2/assets/134658259/861f0ad6-51b0-4cde-983f-686d36cbc6ad)
-
-
-
 **Fig 8**
+The figure shows the flow diagram used to smooth the data obtained from server data during the 48 hours required for the project when plotting graphs. It also showed the explanation of each step for the flow diagram used to smooth the data obtained from the server.
+![CommSci 10](https://github.com/Rokyyz/unit2/assets/134658259/861f0ad6-51b0-4cde-983f-686d36cbc6ad)
+**Fig 9**
+## Explanation of the function that allows to write/append data to a csv file
 
 ![IMG_1975](https://github.com/Rokyyz/unit2/assets/134658259/14261893-de77-4210-811a-6bfd4cffd31a)
+**Fig 10**
+The figure shows the flow diagram used to smooth the data obtained from server data during the 48 hours required for the project when plotting graphs. It also showed the explanation of each step for the flow diagram used to smooth the data obtained from the server.
 ![CommSci 11](https://github.com/Rokyyz/unit2/assets/134658259/6e03b5b7-0672-42e0-b016-7f7c924d9e0f)
-
-
-
-**Fig 9**
-
+**Fig 11**
+## Explanation of data smoothing
 
 ![IMG_1977](https://github.com/Rokyyz/unit2/assets/134658259/59d52716-1e88-4fe2-afc6-43cd5e83049f)
+**Fig 12**
 ![IMG_1978](https://github.com/Rokyyz/unit2/assets/134658259/4f059f4a-e894-45fe-bc0d-e2c59f4908f6)
+**Fig 13** 
+## Explanation of prediction for data, fitting quadratic polynomials to the data, extending the x values.
 
 # Criteria C: Development
 
