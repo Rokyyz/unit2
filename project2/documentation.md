@@ -158,7 +158,7 @@ https://learn.adafruit.com/modern-replacements-for-dht11-dht22-sensors/what-are-
 5. If/elif statements
 6. Matplotlib's Pyplot to generate graphs
 7. Matplotlib's GridSpec to generate composite graphs
-8. Numpy to calculate standard dieviation and generate quadratic models
+8. Numpy to calculate standard deviation and generate quadratic models
 9. Reading from csv files
 10. Appending to csv files
 11. Logging into online API servers
