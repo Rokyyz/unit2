@@ -151,7 +151,24 @@ https://learn.adafruit.com/modern-replacements-for-dht11-dht22-sensors/what-are-
 # Criteria C: Development
 
 ## List of techniques used
-
+1. Functions
+2. For loops
+3. Lists
+4. Dictionaries
+5. If/elif statements
+6. Matplotlib's Pyplot to generate graphs
+7. Matplotlib's GridSpec to generate composite graphs
+8. Numpy to calculate standard dieviation and generate quadratic models
+9. Reading from csv files
+10. Appending to csv files
+11. Logging into online API servers
+12. Requests library to work with online API servers
+13. Reading from online API servers
+14. Posting data to online API servers
+15. Arduino IDE to work with Arduino
+16. DHT library to work with DHT11 sensors in Arduino
+17. Serial library to work with Arduino in Python
+18. Time library to create pauses between readings from DHT sensors
 ## Development
 
 
