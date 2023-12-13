@@ -181,6 +181,35 @@ The flow diagram of the model function takes input data (x and y), fits a quadra
 **Fig 13** 
 ## Explanation of prediction for data, fitting quadratic polynomials to the data, extending the x values.
 
+## Data Storing
+## 1. CSV Files
+We one csv file per sensor and sent the data gathered from the sensors to the correct csv file.
+
+![csv1](https://github.com/Rokyyz/unit2/assets/142757981/463914e0-fb52-4d8c-809a-83f047415221)
+
+**Fig 14**
+Data from sensor 1 in 'sensor1.csv' file
+
+![csv2](https://github.com/Rokyyz/unit2/assets/142757981/6e4e2394-71f5-441f-8cb0-29c6261ef866)
+
+**Fig 15**
+Data from sensor 2 in 'sensor2.csv' file
+
+![csv3](https://github.com/Rokyyz/unit2/assets/142757981/0f6a82c2-05d5-4fa1-baf7-abf9733796d8)
+
+**Fig 16**
+Data from sensor 3 in 'sensor3.csv' file
+
+
+
+## 2. Remote API Server
+Once we had all of the values stored in the csv files, we uploaded the data to the remote API server.
+
+![API](https://github.com/Rokyyz/unit2/assets/142757981/b233285b-0935-438a-9956-2b5763ab5aa3)
+**Fig 17**
+Data uploaded on the server
+
+
 # Criteria C: Development
 
 ## List of techniques used
