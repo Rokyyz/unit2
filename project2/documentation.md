@@ -171,6 +171,14 @@ https://learn.adafruit.com/modern-replacements-for-dht11-dht22-sensors/what-are-
 18. Time library to create pauses between readings from DHT sensors
 
 ## 1. The gathered data and graphs provide a visual representation of the Humidity and Temperature values inside (local) and outside (remote) a student's room for a minimum of 48 hours.
+We used the pyplot function from the Matplotlib library in order to create graphs that visualize the data. We also used the GridSpec function from the same library to present the readings from all the sensors side by side. This, in conjunction with plt.xlim() and plt.ylim() which make the graphs depicting local data have the same scale, makes it easier to see the difference between the sensors' data. The remote sensor has its own scale because it has a higher range of values and adjusting the local sensors' scales to fit it would make them harder to read.
+
+Another technique we used to make the visual representation easier to understand is the smoothing function. Through it, we utilized the Abstraction part of CT: by taking the average out of a certain size window of values and only presenting those averages on the graph, we were able to ignore most outliers and show the most important information, which is the general trend of the data. This also made the graph more visually appealing.
+
+Continuing with the Abstraction part of CT, we also created a graph with mean local humidity and temperature with a quadratic model attached to it. Both of these serve to better show the general trend of data from all of the local sensors.
+
+
+
 
 ## 2. The local data will be recorded using a set of 3 sensors around the dormitory.
 
