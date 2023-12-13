@@ -12,9 +12,9 @@ A student in an international boarding school has been struggling with sleep qua
 
 ## Success criteria
 
-1. The gathered data and graphs provide a visual representation of the Humidity and Temperature values inside a student's room for minimum of 48 hours.
+1. The gathered data and graphs provide a visual representation of the Humidity and Temperature values inside (local) and outside (remote) a student's room for a minimum of 48 hours.
 2. The local data will be recorded using a set of 3 sensors around the dormitory.
-3.  The solution provides mathematical modeling for the humidity and temperature levels in the room, both linear and non-linear models.
+3. The solution provides a non-linear mathematical modelling for the humidity and temperature levels both inside and outside the room.
 4. The solution provides a comparative analysis of the humidity and temperature levels in the room using mean, standard deviation, minimum, maximum, and median.
 5. The Local data is stored in a csv file and posted to the remote API server as a backup.
 6. Create a prediction of the data for temperature and humidity inside the room for the following 12 hours
@@ -170,11 +170,11 @@ https://learn.adafruit.com/modern-replacements-for-dht11-dht22-sensors/what-are-
 17. Serial library to work with Arduino in Python
 18. Time library to create pauses between readings from DHT sensors
 
-## 1. The gathered data and graphs provide a visual representation of the Humidity and Temperature values inside a student's room for minimum of 48 hours.
+## 1. The gathered data and graphs provide a visual representation of the Humidity and Temperature values inside (local) and outside (remote) a student's room for a minimum of 48 hours.
 
 ## 2. The local data will be recorded using a set of 3 sensors around the dormitory.
 
-## 3. The solution provides mathematical modeling for the humidity and temperature levels in the room, both linear and non-linear models.
+## 3. The solution provides a non-linear mathematical modelling for the humidity and temperature levels both inside and outside the room.
 
 ## 4. The solution provides a comparative analysis of the humidity and temperature levels in the room using mean, standard deviation, minimum, maximum, and median.
 
