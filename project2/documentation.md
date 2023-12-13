@@ -198,7 +198,14 @@ In order to fulfill success criterion 4, we used the Decomposition part of CT. W
 
 The advantage that these values give is that the client can see how much the values across the three local sensors differ from each other through pattern recognition. The lines on the graph being close to each other represents similar readings across the three sensors, while the lines being further away represents differing readings.
 ## 5. The Local data is stored in a csv file and posted to the remote API server as a backup.
+We created three csv files for each of the three local sensors. In order to store the data from the sensors in the correct csv file, we created an algorithm that splits the data sent over from Arduino to Python by comma and checks the last value, which is the number of the sensor that sent the data. It then utilizes the with open function and sets the mode to append in order to send the data to the corresponding csv file.
 
+As for sending the data to the remote API server, we decided to wait until we had all the values in the csv file. We decided that this would be easier because of the faulty connection to the WiFi in the room downstairs where the data was being taken. Were we to send the data to the API server over the 48 hours, this problem would have certainly created gaps in the data, which would invalidate it.
+
+When we were preparing to send the data from the csv files to the API server, we noticed a pattern in the code. Hence, instead of running three similar blocks of code for all three of the csv files, we created a function that took the name of the csv file and the id's of the humidity and temperature sensors. This made the code more condensed and visually appealing.
+In the function we extract the data from the chosen csv file and iterate over it line by line by using a for loop. We then split the lines by comma to get the humidity, temperature, and the datetime. We then modify the datetime to fit the API server's format. Finally we post the humidity and temperature together with the datetime to the specified sensors.
+
+Thus, we have fulfilled criterion 5
 ## 6. Create a prediction of the data for temperature and humidity inside the room for the following 12 hours
 
 ## 7. The solution includes a poster summarizing the visual representations, model and analysis created. The poster includes a recommendation about healthy levels for Temperature and Humidity
