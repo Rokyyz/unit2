@@ -186,7 +186,11 @@ Continuing with the Abstraction part of CT, we also created a graph with mean lo
 
 
 ## 2. The local data will be recorded using a set of 3 sensors around the dormitory.
+In order to fulfill success criterion 2, we used 3 DHT11 sensors to collect data on the room's humidity and temperature. We decided to place the first sensor near the floor next to the radiator, the second one on the table, and the third one near the ceiling next to the window. We knew that temperature tends to be lower near the floor and higher near the ceiling, so we were curious to see how the sensors would reflect that. We also wanted to see how a running radiator and open window would impact the data for sensors 1 and 3. The sensor on the table was supposed to be the average
 
+We also decided to place a humidifier a few hours after the sensors started to collect data. The humidity is known to be low in the students' rooms and the DHT11 sensors cannot detect humidity below 20 per cent, so we were afraid that the sensors would keep sending the value 20. We hoped that the humidifier would provide variety to the data.
+
+We also decided to collect data for 62 hours, from 2023-12-06 23:27 (Wednesday) to 2023-12-09 13:22 (Saturday). We knew that the weather on Saturday was supposed to be sunny from the weather forecast, and we were curious how it would impact the sensor readings, so we went over the 48 hour minimum.
 ## 3. The solution provides a non-linear mathematical modelling for the humidity and temperature levels both inside and outside the room.
 
 ## 4. The solution provides a comparative analysis of the humidity and temperature levels in the room using mean, standard deviation, minimum, maximum, and median.
