@@ -149,9 +149,35 @@ https://learn.adafruit.com/modern-replacements-for-dht11-dht22-sensors/what-are-
 | Non-functional：Code review                         | Reviewing if the code has too many or non-efficient comments, functions, and variable names that would make the code too lengthy, hard to understand and overview, and find ways to make it more concise and structured. There are no inputs, because the review is based on monitoring the quality of the code written. | 1. Involve a person not connected with this project, so they wouldn't be familiar with the code and methods used. 2. Gather feedback from the external developer on which parts are not understandable, too lengthy, can be improved on in terms of efficiency, which names, functions, and variables are not logically made and named.                                                     | The developer gives feedback on the code, which includes comments explaining what are the prominent issues and if some reoccur. That includes the names of variables and the crosscheck if they are simple and it is easy to understand their usage in the program is           |
 
 # Flow Diagrams
-So get_sensor, read_data, smoothing, and qmodel
 
 
+**Fig 6**
+![IMG_1971](https://github.com/Rokyyz/unit2/assets/134658259/b3c76488-4bce-491d-ae79-e577c13a0ea8)
+
+![IMG_1972](https://github.com/Rokyyz/unit2/assets/134658259/2ab3bbbd-f0f0-4057-89e1-c435547d8a79)
+
+
+
+**Fig 7**
+
+
+![CommSci 9](https://github.com/Rokyyz/unit2/assets/134658259/e3b90504-0645-49c2-b968-0621d472f23a)
+![CommSci 10](https://github.com/Rokyyz/unit2/assets/134658259/861f0ad6-51b0-4cde-983f-686d36cbc6ad)
+
+
+
+**Fig 8**
+
+![IMG_1975](https://github.com/Rokyyz/unit2/assets/134658259/14261893-de77-4210-811a-6bfd4cffd31a)
+![CommSci 11](https://github.com/Rokyyz/unit2/assets/134658259/6e03b5b7-0672-42e0-b016-7f7c924d9e0f)
+
+
+
+**Fig 9**
+
+
+![IMG_1977](https://github.com/Rokyyz/unit2/assets/134658259/59d52716-1e88-4fe2-afc6-43cd5e83049f)
+![IMG_1978](https://github.com/Rokyyz/unit2/assets/134658259/4f059f4a-e894-45fe-bc0d-e2c59f4908f6)
 
 # Criteria C: Development
 
