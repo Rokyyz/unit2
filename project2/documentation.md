@@ -158,10 +158,12 @@ The figure shows the flow diagram used to access the data from the server. The f
 **Fig 7**
 ## Explanation of accessing, and adding data from sensors
 
-![CommSci 9](https://github.com/Rokyyz/unit2/assets/134658259/e3b90504-0645-49c2-b968-0621d472f23a)
+![CommSci 12](https://github.com/Rokyyz/unit2/assets/134658259/babcc7a9-43ad-4f86-84ac-41f3ed35ce1e)
+
 **Fig 8**
 The figure shows the flow diagram used to allow reading/appending data to an empty list, during the 48-hour recording period from the sensors with an ID indicated. By using this function it reads the data in the csv that was recorded in the sensors and it strips it off of symbols that make the data unusable to perform further actions, like using the data for graph point plotting
-![CommSci 10](https://github.com/Rokyyz/unit2/assets/134658259/861f0ad6-51b0-4cde-983f-686d36cbc6ad)
+![CommSci 13](https://github.com/Rokyyz/unit2/assets/134658259/1d4411d1-e8ac-4513-8d7d-b32618686400)
+
 **Fig 9**
 ## Explanation of the function that allows to read/append data to an empty list
 
