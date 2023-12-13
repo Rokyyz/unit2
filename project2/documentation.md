@@ -243,18 +243,41 @@ However, we had a problem when trying to gather data from the remote sensor . We
 Another problem that this creates is that the available remote sensor readings are only 56 hours long, which is 6 hours below the readings we have for our local sensors. However, even 56 hours is well above the 48 hour minimum required from us, so we believe that adjusting the graphs with the remote data accordingly will alleviate this issue.
 
 
+![Sensor Readings](https://github.com/Rokyyz/unit2/assets/142757981/b9aacc07-bb0b-4ec2-afb5-43df3f2d5086)
+
+**Fig 1.1** 
+A composite plot containing the graphs of all the sensors' recordings
+
+![Local Average Readings](https://github.com/Rokyyz/unit2/assets/142757981/239fb2c1-a2eb-48ef-b0fe-45f6c884c796)
+
+**Fig 1.2**
+A graph showing the mean humidity and temperature from the local sensors + quadratic model of the data
+
+![Remote Readings](https://github.com/Rokyyz/unit2/assets/142757981/fbc62543-1f73-4337-a171-49cd16a268f9)
+
+**Fig 1.3**
+A graph showing the data collected from the remote sensor + quadratic model of the data
+
+![Remote Sensors](https://github.com/Rokyyz/unit2/assets/142757981/2576888c-50fc-47ae-bc9c-9d15009f6e25)
+
+**Fig 1.4**
+A graph showing the data collected from all three remote sensors. The first three plots are temperature and the last three are humidity.
+
 ## 2. The local data will be recorded using a set of 3 sensors around the dormitory.
 In order to fulfill success criterion 2 we used 3 DHT11 sensors to collect data on the room's humidity and temperature. We decided to place the first sensor near the floor next to the radiator, the second one on the table, and the third one near the ceiling next to the window. We knew that temperature tends to be lower near the floor and higher near the ceiling, so we were curious to see how the sensors would reflect that. We also wanted to see how a running radiator and open window would impact the data for sensors 1 and 3. The sensor on the table was supposed to be the average
 
 We also decided to place a humidifier a few hours after the sensors started to collect data. The humidity is known to be low in the students' rooms and the DHT11 sensors cannot detect humidity below 20 per cent, so we were afraid that the sensors would keep sending the value 20. We hoped that the humidifier would provide variety to the data.
 
 We also decided to collect data for 62 hours, from 2023-12-06 23:27 (Wednesday) to 2023-12-09 13:22 (Saturday). We knew that the weather on Saturday was supposed to be sunny from the weather forecast, and we were curious how it would impact the sensor readings, so we went over the 48 hour minimum.
+
 ## 3. The solution provides a non-linear mathematical modelling for the humidity and temperature levels both inside and outside the room.
 In order to fulfill success criterion 3 we used the Numpy library to create a quadratic mathematical modelling for both local and remote data. We then proceeded to create three different graphs: one showing the contrast between the mean local data and the qudratic model for that data, the second showing the contrast between the remote data and the quadratic model for that data, and finally the third showing the contrast between local and remote models. The first two graphs are able to show the client how reliably the quadratic models cover the data they are supposed to represent. While the models have the benefit of showing the trends in the data most clearly, they do so by sacrificing a lot of details. These graphs serve to show that to the client so that they know this limitation. The third graph serves to show the contrast between general trends in local and remote data, so that the client has an idea on how the two types of data differ.
+
 ## 4. The solution provides a comparative analysis of the humidity and temperature levels in the room using mean, standard deviation, minimum, maximum, and median.
 In order to fulfill success criterion 4, we used the Decomposition part of CT. We split the mean, standard deviation, minimum, maximum, and median for both humidity and temperature into their own individual problems, solving them one by one through each of the 744 iterations of the for loop (which represents 62 hours) and appending the result into the respective list. We then split those values into 4 different graphs, 2 for humidity and 2 for temperature, with one graph representing the mean and median, and the other representing the mean, standard deviation, minimum, and maximum. We decided to split the median from the rest of the values because the graph was too hard to read with so many values at once.
 
 The advantage that these values give is that the client can see how much the values across the three local sensors differ from each other through pattern recognition. The lines on the graph being close to each other represents similar readings across the three sensors, while the lines being further away represents differing readings.
+
 ## 5. The Local data is stored in a csv file and posted to the remote API server as a backup.
 We created three csv files for each of the three local sensors. In order to store the data from the sensors in the correct csv file, we created an algorithm that splits the data sent over from Arduino to Python by comma and checks the last value, which is the number of the sensor that sent the data. It then utilizes the with open function and sets the mode to append in order to send the data to the corresponding csv file.
 
@@ -263,10 +286,12 @@ As for sending the data to the remote API server, we decided to wait until we ha
 When we were preparing to send the data from the csv files to the API server, we noticed a pattern in the code. Hence, instead of running three similar blocks of code for all three of the csv files, we created a function that took the name of the csv file and the id's of the humidity and temperature sensors. This made the code more condensed and visually appealing.
 In the function we extract the data from the chosen csv file and iterate over it line by line by using a for loop. We then split the lines by comma to get the humidity, temperature, and the datetime. We then modify the datetime to fit the API server's format. Finally we post the humidity and temperature together with the datetime to the specified sensors.
 
-Thus, we have fulfilled criterion 5
+Thus, we have fulfilled success criterion 5
+
 ## 6. Create a prediction of the data for temperature and humidity inside the room for the following 12 hours
 When we created the quadratic model for the mean of the data from the local sensor, we made sure to extend the model's domain by 12 hours, which created our prediction. We did the same for the model for the remote data, but instead extended the domain by 18 hours in order to match the local model. This is because the remote sensor has 6 hours less of data for reasons stated earlier.
 Thus we have fulfilled success criterion 6
+
 ## 7. The solution includes a poster summarizing the visual representations, model and analysis created. The poster includes a recommendation about healthy levels for Temperature and Humidity
 
 
