@@ -417,7 +417,50 @@ We also decided to place a humidifier a few hours after the sensors started to c
 We also decided to collect data for 62 hours, from 2023-12-06 23:27 (Wednesday) to 2023-12-09 13:22 (Saturday). We knew that the weather on Saturday was supposed to be sunny from the weather forecast, and we were curious how it would impact the sensor readings, so we went over the 48 hour minimum.
 
 ## 3. The solution provides a non-linear mathematical modelling for the humidity and temperature levels both inside and outside the room.
-In order to fulfill success criterion 3 we used the Numpy library to create a quadratic mathematical modelling for both local and remote data. We then proceeded to create three different graphs: one showing the contrast between the mean local data and the qudratic model for that data, the second showing the contrast between the remote data and the quadratic model for that data, and finally the third showing the contrast between local and remote models. The first two graphs are able to show the client how reliably the quadratic models cover the data they are supposed to represent. While the models have the benefit of showing the trends in the data most clearly, they do so by sacrificing a lot of details. These graphs serve to show that to the client so that they know this limitation. The third graph serves to show the contrast between general trends in local and remote data, so that the client has an idea on how the two types of data differ.
+In order to fulfill success criterion 3 we used the Numpy library to create a quadratic mathematical modelling for both local and remote data. We then proceeded to create three different graphs: one showing the contrast between the mean local data and the quadratic model for that data, the second showing the contrast between the remote data and the quadratic model for that data, and finally the third showing the contrast between local and remote models. The first two graphs are able to show the client how reliably the quadratic models cover the data they are supposed to represent. While the models have the benefit of showing the trends in the data most clearly, they do so by sacrificing a lot of details. These graphs serve to show that to the client so that they know this limitation. The third graph serves to show the contrast between general trends in local and remote data, so that the client has an idea on how the two types of data differ.
+
+![Local Average Readings](https://github.com/Rokyyz/unit2/assets/142757981/ad493311-05b8-40aa-a8b3-7ec9ca4acbb8)
+
+**Fig 3.1**
+Graph of the mean of the data from the local sensors and the quadratic model
+
+
+![Remote Readings](https://github.com/Rokyyz/unit2/assets/142757981/64b6f3c7-e638-43da-b561-be1be233f78e)
+
+**Fig 3.2**
+Graph of the data from the remote sensor and the quadratic model
+
+
+![Model Comparison](https://github.com/Rokyyz/unit2/assets/142757981/983d6436-13b9-4a0d-b624-9c4369ab73f9)
+
+**Fig 3.3**
+Graph comparing the quadratic models
+
+
+
+```.py
+plt.subplot(2, 1, 1)
+plt.plot(x1, h_model, color='red', label='Local')
+plt.plot(x2, out_h_model, color='blue', label='Remote')
+plt.ylabel('Humidity (%)')
+plt.legend()
+plt.title('Local and Remote Humidity Models')
+
+plt.subplot(2, 1, 2)
+plt.plot(x1, temp_model, color='red', label='Local')
+plt.plot(x2, out_temp_model, color='blue', label='Remote')
+plt.ylabel('Temperature (C)')
+plt.xlabel('Time (hours)')
+plt.legend()
+plt.title('Local and Remote Temperature Models')
+
+plt.subplots_adjust(hspace=0.5)
+plt.show()
+```
+
+**Code 3.1**
+Code for creating the graphs that compare the local and remote models
+
 
 ## 4. The solution provides a comparative analysis of the humidity and temperature levels in the room using mean, standard deviation, minimum, maximum, and median.
 In order to fulfill success criterion 4, we used the Decomposition part of CT. We split the mean, standard deviation, minimum, maximum, and median for both humidity and temperature into their own individual problems, solving them one by one through each of the 744 iterations of the for loop (which represents 62 hours) and appending the result into the respective list. We then split those values into 4 different graphs, 2 for humidity and 2 for temperature, with one graph representing the mean and median, and the other representing the mean, standard deviation, minimum, and maximum. We decided to split the median from the rest of the values because the graph was too hard to read with so many values at once.
