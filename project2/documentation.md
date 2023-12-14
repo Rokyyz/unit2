@@ -584,7 +584,23 @@ Picture of the data uploaded to the remote API server
 
 
 ```.py
+while True:
+    time.sleep(0.1)
+    value = read()  # wait until data is in the port
+    msg = value.decode('utf-8')
+    print(msg.strip('\r\n').split(','))
 
+    if msg.strip('\r\n').split(',')[2] == '1':
+        with open('sensor1.csv', mode='a') as f:
+            f.writelines(f'{msg[:-4]},{datetime.datetime.now()}\n')
+
+    elif msg.strip('\r\n').split(',')[2] == '2':
+        with open('sensor2.csv', mode='a') as f:
+            f.writelines(f'{msg[:-4]},{datetime.datetime.now()}\n')
+
+    elif msg.strip('\r\n').split(',')[2] == '3':
+        with open('sensor3.csv', mode='a') as f:
+            f.writelines(f'{msg[:-4]},{datetime.datetime.now()}\n')
 ```
 
 **Code 5.1**
@@ -637,6 +653,20 @@ Graph of the mean of the data from the local sensors and the corresponding quadr
 Graph of the data from the remote sensor and the corresponding quadratic model
 
 
+```.py
+def qmodel(x: list, y: list, prediction: int):
+    a, b, c = np.polyfit(x, y, 2)
+    model = []
+    future_x = x.copy()
+    for i in range(prediction):
+        future_x.append(len(future_x))
+    for i in range(len(future_x)):
+        model.append(a * (i ** 2) + b * i + c)
+    return model, future_x
+```
+
+**Code 6.1**
+Code for the qmodel function
 ## 7. The solution includes a poster summarizing the visual representations, model and analysis created. The poster includes a recommendation about healthy levels for Temperature and Humidity
 
 
