@@ -690,3 +690,9 @@ Code for the qmodel function
 
 A 7 min video demonstrating the proposed solution with narration
 
+https://youtu.be/crNc5wXMmDY?si=2ASautwjL4P8nHQ4 
+
+https://drive.google.com/drive/folders/116m6XckluCguFD21VpoFRdTZhC5qgeBz?usp=drive_link
+
+
+
