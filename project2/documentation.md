@@ -410,11 +410,26 @@ Code for creating the graphs with the remote data and the appropriate quadratic 
 
 
 ## 2. The local data will be recorded using a set of 3 sensors around the dormitory.
-In order to fulfill success criterion 2 we used 3 DHT11 sensors to collect data on the room's humidity and temperature. We decided to place the first sensor near the floor next to the radiator, the second one on the table, and the third one near the ceiling next to the window. We knew that temperature tends to be lower near the floor and higher near the ceiling, so we were curious to see how the sensors would reflect that. We also wanted to see how a running radiator and open window would impact the data for sensors 1 and 3. The sensor on the table was supposed to be the average
+In order to fulfill success criterion 2 we used 3 DHT11 sensors connected to an Arduino to collect data on the room's humidity and temperature (**Fig 2.1**). We decided to place the first sensor on the curtain next to the window which is at about half the room's height, the second one on the table, and the third one near the ceiling next to where the window opens (**Fig 2.2**). We knew that temperature tends to be lower near the floor and higher near the ceiling, so we were curious to see how the sensors would reflect that. We also wanted to see how an open window would impact the data for sensor 3.
 
 We also decided to place a humidifier a few hours after the sensors started to collect data. The humidity is known to be low in the students' rooms and the DHT11 sensors cannot detect humidity below 20 per cent, so we were afraid that the sensors would keep sending the value 20. We hoped that the humidifier would provide variety to the data.
 
 We also decided to collect data for 62 hours, from 2023-12-06 23:27 (Wednesday) to 2023-12-09 13:22 (Saturday). We knew that the weather on Saturday was supposed to be sunny from the weather forecast, and we were curious how it would impact the sensor readings, so we went over the 48 hour minimum.
+
+
+![Arduino](https://github.com/Rokyyz/unit2/assets/142757981/1d96e07b-ade1-42f2-8753-6ed9d920502c)
+
+**Fig 2.1**
+Picture of the Arduino, the breadboard, and the wires connecting the sensors to the Arduino
+
+
+
+![Sensors](https://github.com/Rokyyz/unit2/assets/142757981/9a600d0c-74e9-4427-a9b8-73aa0e03b7a5)
+
+**Fig 2.2**
+Picture of the locations of the sensors in the room
+
+
 
 ## 3. The solution provides a non-linear mathematical modelling for the humidity and temperature levels both inside and outside the room.
 In order to fulfill success criterion 3 we used the Numpy library to create a quadratic mathematical modelling for both local and remote data. We then proceeded to create three different graphs: one showing the contrast between the mean local data and the quadratic model for that data (**Fig 3.1**), the second showing the contrast between the remote data and the quadratic model for that data (**Fig 3.2**), and finally the third showing the contrast between local and remote models (**Fig 3.3**). The first two graphs are able to show the client how reliably the quadratic models cover the data they are supposed to represent. While the models have the benefit of showing the trends in the data most clearly, they do so by sacrificing a lot of details. These graphs serve to show that to the client so that they know this limitation. The third graph serves to show the contrast between general trends in local and remote data, so that the client has an idea on how the two types of data differ.
