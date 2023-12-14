@@ -235,7 +235,7 @@ Data uploaded on the server
 ## 1. The gathered data and graphs provide a visual representation of the Humidity and Temperature values inside (local) and outside (remote) a student's room for a minimum of 48 hours.
 We used the pyplot function from the Matplotlib library in order to create graphs that visualize the data. We also used the GridSpec function from the same library to present the readings from all the sensors side by side (**Fig 1.1**). This, in conjunction with plt.xlim() and plt.ylim() which make the graphs depicting local data have the same scale, makes it easier to see the difference between the sensors' data (**Code 1.1**). The remote sensor has its own scale because it has a higher range of values and adjusting the local sensors' scales to fit it would make them harder to read.
 
-Another technique we used to make the visual representation easier to understand is the smoothing function. Through it, we utilized the Abstraction part of CT: by taking the average out of a certain size window of values and only presenting those averages on the graph, we were able to ignore most outliers and show the most important information, which is the general trend of the data. This also made the graph more visually appealing.
+Another technique we used to make the visual representation easier to understand is the smoothing function. Through it, we utilized the Abstraction part of CT: by taking the average out of a certain size window of values and only presenting those averages on the graph (one value per hour), we were able to ignore most outliers and show the most important information, which is the general trend of the data. This also made the graph more visually appealing.
 
 We also utilized Abstraction when creating a graph with the mean local humidity and temperature with a quadratic model attached to it (**Fig 1.2**). For the mean, we recognized the pattern calculating the mean and utilized it through a for loop that iterated over all of the readings from the local sensors (**Code 1.2**). For the model, we created an algorithm in the form of the qmodel function. This function begins by creating a quadratic model by making use of the polyfit function from the Numpy library. Then, if a prediction is requested for it, it goes on to create a new list of x-values that it then iterates over to plot the model (**Code 1.3**). Both the mean and the model serve to better show the general trend of data from all of the local sensors, while ignoring less relevant information. We utilized the same quadratic model for the graph of the remote sensor (**Fig 1.3**)(**Code 1.4**).
 
@@ -417,7 +417,7 @@ We also decided to place a humidifier a few hours after the sensors started to c
 We also decided to collect data for 62 hours, from 2023-12-06 23:27 (Wednesday) to 2023-12-09 13:22 (Saturday). We knew that the weather on Saturday was supposed to be sunny from the weather forecast, and we were curious how it would impact the sensor readings, so we went over the 48 hour minimum.
 
 ## 3. The solution provides a non-linear mathematical modelling for the humidity and temperature levels both inside and outside the room.
-In order to fulfill success criterion 3 we used the Numpy library to create a quadratic mathematical modelling for both local and remote data. We then proceeded to create three different graphs: one showing the contrast between the mean local data and the quadratic model for that data, the second showing the contrast between the remote data and the quadratic model for that data, and finally the third showing the contrast between local and remote models. The first two graphs are able to show the client how reliably the quadratic models cover the data they are supposed to represent. While the models have the benefit of showing the trends in the data most clearly, they do so by sacrificing a lot of details. These graphs serve to show that to the client so that they know this limitation. The third graph serves to show the contrast between general trends in local and remote data, so that the client has an idea on how the two types of data differ.
+In order to fulfill success criterion 3 we used the Numpy library to create a quadratic mathematical modelling for both local and remote data. We then proceeded to create three different graphs: one showing the contrast between the mean local data and the quadratic model for that data (**Fig 3.1**), the second showing the contrast between the remote data and the quadratic model for that data (**Fig 3.2**), and finally the third showing the contrast between local and remote models (**Fig 3.3**). The first two graphs are able to show the client how reliably the quadratic models cover the data they are supposed to represent. While the models have the benefit of showing the trends in the data most clearly, they do so by sacrificing a lot of details. These graphs serve to show that to the client so that they know this limitation. The third graph serves to show the contrast between general trends in local and remote data, so that the client has an idea on how the two types of data differ.
 
 ![Local Average Readings](https://github.com/Rokyyz/unit2/assets/142757981/ad493311-05b8-40aa-a8b3-7ec9ca4acbb8)
 
@@ -463,9 +463,100 @@ Code for creating the graphs that compare the local and remote models
 
 
 ## 4. The solution provides a comparative analysis of the humidity and temperature levels in the room using mean, standard deviation, minimum, maximum, and median.
-In order to fulfill success criterion 4, we used the Decomposition part of CT. We split the mean, standard deviation, minimum, maximum, and median for both humidity and temperature into their own individual problems, solving them one by one through each of the 744 iterations of the for loop (which represents 62 hours) and appending the result into the respective list. We then split those values into 4 different graphs, 2 for humidity and 2 for temperature, with one graph representing the mean and median, and the other representing the mean, standard deviation, minimum, and maximum. We decided to split the median from the rest of the values because the graph was too hard to read with so many values at once.
+In order to fulfill success criterion 4, we used the Decomposition part of CT. We split the mean, standard deviation, minimum, maximum, and median for both humidity and temperature into their own individual problems, solving them one by one through each of the 744 iterations of the for loop (which represents 62 hours) and appending the result into the respective list (**Code 4.1**). We then split those values into 4 different graphs, 2 for humidity and 2 for temperature, with one graph representing the mean and median, and the other representing the mean, standard deviation, minimum, and maximum. We decided to split the median from the rest of the values because the graph was too hard to read with so many values at once.
 
-The advantage that these values give is that the client can see how much the values across the three local sensors differ from each other through pattern recognition. The lines on the graph being close to each other represents similar readings across the three sensors, while the lines being further away represents differing readings.
+When plotting the standard deviation, we notice a pattern: we need to fill the space from the difference of the mean and standard deviation to the sum of the mean and standard deviation. Thus, we create a for loop that iterates 62 times (because of smoothing we have 1 value per hour) and appends to lists containing the upper and lower bounds of the standard deviation (**Code 4.2**). These are then used to represent the standard deviation on the plot.
+
+The advantage that these values give is that the client can see how much the values across the three local sensors differ from each other through pattern recognition. The lines on the graph being close to each other represents similar readings across the three sensors (**Fig 4.3**, **Fig 4.4**), while the lines being further away represents differing readings (**Fig 4.1**, **Fig 4.2**).
+
+
+![Min Max Humidity](https://github.com/Rokyyz/unit2/assets/142757981/123b1a6c-fe8c-4ffa-b68b-387325f85fa1)
+
+**Fig 4.1**
+Graph showing the mean, standard deviation, minimum, and maximum of the humidity recorded from the local sensors
+
+
+![Median Humidity](https://github.com/Rokyyz/unit2/assets/142757981/52d80deb-1e6b-44dc-93bd-5ad14a745b52)
+
+**Fig 4.2**
+Graph showing the mean and median of the humidity recorded from the local sensors
+
+
+![Min Max Temperature](https://github.com/Rokyyz/unit2/assets/142757981/ff12abca-8b3d-4938-a56a-c5e2b5383330)
+
+**Fig 4.3**
+Graph showing the mean, standard deviation, minimum, and maximum of the temperature recorded from the local sensors
+
+
+![Median Temperature](https://github.com/Rokyyz/unit2/assets/142757981/9f084424-ec86-4824-a392-5716b070cf36)
+
+**Fig 4.4**
+Graph showing the mean and median of the temperature recorded from the local sensors
+
+
+```.py
+max_h = []
+min_h = []
+max_temp = []
+min_temp = []
+std_h = []
+std_temp = []
+med_h = []
+med_temp = []
+
+for i in range(744):
+    max_h.append(max(s1['h'][i], s2['h'][i], s3['h'][i]))
+    min_h.append(min(s1['h'][i], s2['h'][i], s3['h'][i]))
+    max_temp.append(max(s1['temp'][i], s2['temp'][i], s3['temp'][i]))
+    min_temp.append(min(s1['temp'][i], s2['temp'][i], s3['temp'][i]))
+    std_h.append(float(np.std([s1['h'][i], s2['h'][i], s3['h'][i]])))
+    std_temp.append(float(np.std([s1['temp'][i], s2['temp'][i], s3['temp'][i]])))
+    x = [s1['h'][i], s2['h'][i], s3['h'][i]]
+    med_h.append(sorted(x)[1])
+    x = [s1['temp'][i], s2['temp'][i], s3['temp'][i]]
+    med_temp.append(sorted(x)[1])
+```
+
+**Code 4.1**
+Code for calculating the values needed in the graphs
+
+
+
+```.py
+x, mean_y = smoothing(avg_h, size_window=12)
+plt.plot(x, mean_y, label='Mean', color='red')
+x, std_y = smoothing(std_h, size_window=12)
+upper_y = []
+lower_y = []
+for i in range(62):
+    upper_y.append(mean_y[i] + std_y[i])
+    lower_y.append(mean_y[i] - std_y[i])
+plt.fill_between(x, upper_y, lower_y, color='gray', alpha=0.2, label='Standard Deviation')
+
+x, max_y = smoothing(max_h, size_window=12)
+plt.plot(x, max_y, linestyle='--', label='Max')
+x, min_y = smoothing(min_h, size_window=12)
+plt.plot(x, min_y, linestyle='--', label='Min')
+plt.ylabel('Humidity (%)')
+plt.xlabel('Time (hours)')
+plt.legend()
+plt.title('Mean, Std, Min, Max Humidity')
+
+plt.show()
+
+
+med_y = smoothing(med_h, size_window=12)[1]
+plt.plot(x, med_y, label='Median', color='blue')
+plt.plot(x, mean_y, label='Mean', color='red')
+plt.ylabel('Humidity (%)')
+plt.xlabel('Time (hours)')
+plt.legend()
+plt.title('Mean and Median Humidity')
+plt.show()
+```
+
+**Code 4.2**
+Code for creating the graphs for mean, standard deviation, minimum, maximum, and median for the recorded humidity values
 
 ## 5. The Local data is stored in a csv file and posted to the remote API server as a backup.
 We created three csv files for each of the three local sensors. In order to store the data from the sensors in the correct csv file, we created an algorithm that splits the data sent over from Arduino to Python by comma and checks the last value, which is the number of the sensor that sent the data. It then utilizes the with open function and sets the mode to append in order to send the data to the corresponding csv file.
