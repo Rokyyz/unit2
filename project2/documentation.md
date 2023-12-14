@@ -559,18 +559,83 @@ plt.show()
 Code for creating the graphs for mean, standard deviation, minimum, maximum, and median for the recorded humidity values
 
 ## 5. The Local data is stored in a csv file and posted to the remote API server as a backup.
-We created three csv files for each of the three local sensors. In order to store the data from the sensors in the correct csv file, we created an algorithm that splits the data sent over from Arduino to Python by comma and checks the last value, which is the number of the sensor that sent the data. It then utilizes the with open function and sets the mode to append in order to send the data to the corresponding csv file.
+We created three csv files for each of the three local sensors (**Fig 5.1**). In order to store the data from the sensors in the correct csv file, we created an algorithm that splits the data sent over from Arduino to Python by comma and checks the last value, which is the number of the sensor that sent the data (**Code 5.1**). It then utilizes the with open function and sets the mode to append in order to send the data to the corresponding csv file.
 
 As for sending the data to the remote API server, we decided to wait until we had all the values in the csv file. We decided that this would be easier because of the faulty connection to the WiFi in the room downstairs where the data was being taken. Were we to send the data to the API server over the 48 hours, this problem would have certainly created gaps in the data, which would invalidate it.
 
-When we were preparing to send the data from the csv files to the API server, we noticed a pattern in the code. Hence, instead of running three similar blocks of code for all three of the csv files, we created a function that took the name of the csv file and the id's of the humidity and temperature sensors. This made the code more condensed and visually appealing.
-In the function we extract the data from the chosen csv file and iterate over it line by line by using a for loop. We then split the lines by comma to get the humidity, temperature, and the datetime. We then modify the datetime to fit the API server's format. Finally we post the humidity and temperature together with the datetime to the specified sensors.
+When we were preparing to send the data from the csv files to the API server, we noticed a pattern in the code. Hence, instead of running three similar blocks of code for all three of the csv files, we created a function that took the name of the csv file and the id's of the humidity and temperature sensors (**Code 5.2**) . This made the code more condensed and visually appealing.
+In the function we extract the data from the chosen csv file and iterate over it line by line by using a for loop. We then split the lines by comma to get the humidity, temperature, and the datetime. We then modify the datetime to fit the API server's format. Finally we post the humidity and temperature together with the datetime to the specified sensors (**Fig 5.2**).
 
 Thus, we have fulfilled success criterion 5
 
+
+![csv1](https://github.com/Rokyyz/unit2/assets/142757981/ba3b571f-f4fc-4048-a421-020dd8c403fc)
+
+**Fig 5.1**
+Picture of one of the three csv files
+
+
+
+![API](https://github.com/Rokyyz/unit2/assets/142757981/b7412e2e-c53b-46f4-82c6-8363fb17a81d)
+
+
+**Fig 5.2**
+Picture of the data uploaded to the remote API server
+
+
+```.py
+
+```
+
+**Code 5.1**
+Code that reads the data from the sensors connected to the Arduino and appends it to the appropriate csv file
+
+
+
+```.py
+def upload_data(file: str, h_sensor: int, temp_sensor: int):
+    with open(file, 'r') as f:
+        data = f.readlines()
+    for d in data:
+        humidity, temperature, date = d.split(',')
+        date = date.replace(" ", "T")
+        record = {"sensor_id": h_sensor, "value": humidity, "datetime": date}
+        requests.post(f"http://{ip}/reading/new",
+                      json=record,
+                      headers=header)
+        record = {"sensor_id": temp_sensor, "value": humidity}
+        requests.post(f"http://{ip}/reading/new",
+                      json=record,
+                      headers=header)
+
+
+upload_data('sensor1.csv', 83, 86)
+upload_data('sensor2.csv', 84, 87)
+upload_data('sensor3.csv', 85, 88)
+```
+
+**Code 5.2**
+Code that uploads the data from the csv files to the remote API server
+
+
 ## 6. Create a prediction of the data for temperature and humidity inside the room for the following 12 hours
-When we created the quadratic model for the mean of the data from the local sensor, we made sure to extend the model's domain by 12 hours, which created our prediction. We did the same for the model for the remote data, but instead extended the domain by 18 hours in order to match the local model. This is because the remote sensor has 6 hours less of data for reasons stated earlier.
-Thus we have fulfilled success criterion 6
+When we created the quadratic model for the mean of the data from the local sensor, we made sure to extend the model's domain by 12 hours by making use of the qmodel function, which created our prediction. We did the same for the model for the remote data, but instead extended the domain by 18 hours in order to match the local model. This is because the remote sensor has 6 hours less of data for reasons stated earlier.
+
+Thus, we have fulfilled success criterion 6
+
+
+![Local Average Readings](https://github.com/Rokyyz/unit2/assets/142757981/7527761a-7eea-4418-9a08-638c3e9cc38f)
+
+**Fig 6.1**
+Graph of the mean of the data from the local sensors and the corresponding quadratic model
+
+
+
+![Remote Readings](https://github.com/Rokyyz/unit2/assets/142757981/24ccfa35-0928-4466-b9d7-61a108a2203b)
+
+**Fig 6.2**
+Graph of the data from the remote sensor and the corresponding quadratic model
+
 
 ## 7. The solution includes a poster summarizing the visual representations, model and analysis created. The poster includes a recommendation about healthy levels for Temperature and Humidity
 
