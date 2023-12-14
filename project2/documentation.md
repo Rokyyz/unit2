@@ -233,35 +233,181 @@ Data uploaded on the server
 18. Time library to create pauses between readings from DHT sensors
 
 ## 1. The gathered data and graphs provide a visual representation of the Humidity and Temperature values inside (local) and outside (remote) a student's room for a minimum of 48 hours.
-We used the pyplot function from the Matplotlib library in order to create graphs that visualize the data. We also used the GridSpec function from the same library to present the readings from all the sensors side by side. This, in conjunction with plt.xlim() and plt.ylim() which make the graphs depicting local data have the same scale, makes it easier to see the difference between the sensors' data. The remote sensor has its own scale because it has a higher range of values and adjusting the local sensors' scales to fit it would make them harder to read.
+We used the pyplot function from the Matplotlib library in order to create graphs that visualize the data. We also used the GridSpec function from the same library to present the readings from all the sensors side by side (**Fig 1.1**). This, in conjunction with plt.xlim() and plt.ylim() which make the graphs depicting local data have the same scale, makes it easier to see the difference between the sensors' data (**Code 1.1**). The remote sensor has its own scale because it has a higher range of values and adjusting the local sensors' scales to fit it would make them harder to read.
 
 Another technique we used to make the visual representation easier to understand is the smoothing function. Through it, we utilized the Abstraction part of CT: by taking the average out of a certain size window of values and only presenting those averages on the graph, we were able to ignore most outliers and show the most important information, which is the general trend of the data. This also made the graph more visually appealing.
 
-We also utilized Abstraction when creating a graph with the mean local humidity and temperature with a quadratic model attached to it. Both the mean and the model serve to better show the general trend of data from all of the local sensors, while ignoring less relevant information. We utilized the same quadratic model for the graph of the remote sensor.
+We also utilized Abstraction when creating a graph with the mean local humidity and temperature with a quadratic model attached to it (**Fig 1.2**). For the mean, we recognized the pattern calculating the mean and utilized it through a for loop that iterated over all of the readings from the local sensors (**Code 1.2**). For the model, we created an algorithm in the form of the qmodel function. This function begins by creating a quadratic model by making use of the polyfit function from the Numpy library. Then, if a prediction is requested for it, it goes on to create a new list of x-values that it then iterates over to plot the model (**Code 1.3**). Both the mean and the model serve to better show the general trend of data from all of the local sensors, while ignoring less relevant information. We utilized the same quadratic model for the graph of the remote sensor (**Fig 1.3**)(**Code 1.4**).
 
-However, we had a problem when trying to gather data from the remote sensor . We had 3 remote sensors to choose from with 6 sensors being registered in the remote API server because humidity and temperature are counted seperately. The pair of sensors 0 and 3 were clearly broken, so we did not consider them. That left us with pairs 1, 4 and 2, 5, both of which had problems most notably in the temperature. From around the 750th x-value and onwards the graphs flatten, which leaves those values out of consideration. The first sensor had an outlier in the form of temperature reaching over 30C, which definitely did not happen during the time in November when that value was taken. The second sensor had values consistently above 15C, when past wheather data showed us that 12C was the highest temperature recorded at that time. Thus, we decided to use the November readings form sensors 1 and 4. We realize that the outlier makes this data not completely reliable, but we believe that this is the best out of the available options.
+However, we had a problem when trying to gather data from the remote sensor . We had 3 remote sensors to choose from with 6 sensors being registered in the remote API server because humidity and temperature are counted seperately (**Fig 1.4**). The pair of sensors 0 and 3 were clearly broken, so we did not consider them. That left us with pairs 1, 4 and 2, 5, both of which had problems most notably in the temperature. From around the 750th x-value and onwards the graphs flatten, which leaves those values out of consideration. The first sensor had an outlier in the form of temperature reaching over 30C, which definitely did not happen during the time in November when that value was taken. The second sensor had values consistently above 15C, when past wheather data showed us that 12C was the highest temperature recorded at that time. Thus, we decided to use the November readings form sensors 1 and 4. We realize that the outlier makes this data not completely reliable, but we believe that this is the best out of the available options.
 Another problem that this creates is that the available remote sensor readings are only 56 hours long, which is 6 hours below the readings we have for our local sensors. However, even 56 hours is well above the 48 hour minimum required from us, so we believe that adjusting the graphs with the remote data accordingly will alleviate this issue.
 
 
 ![Sensor Readings](https://github.com/Rokyyz/unit2/assets/142757981/b9aacc07-bb0b-4ec2-afb5-43df3f2d5086)
 
 **Fig 1.1** 
-A composite plot containing the graphs of all the sensors' recordings
+A composite plot containing the graphs of all the sensors' recordings. Plots for local sensors have the same scale, plots for remote sensor have different scale
+
+
 
 ![Local Average Readings](https://github.com/Rokyyz/unit2/assets/142757981/239fb2c1-a2eb-48ef-b0fe-45f6c884c796)
 
 **Fig 1.2**
 A graph showing the mean humidity and temperature from the local sensors + quadratic model of the data
 
+
+
 ![Remote Readings](https://github.com/Rokyyz/unit2/assets/142757981/fbc62543-1f73-4337-a171-49cd16a268f9)
 
 **Fig 1.3**
 A graph showing the data collected from the remote sensor + quadratic model of the data
 
+
+
 ![Remote Sensors](https://github.com/Rokyyz/unit2/assets/142757981/2576888c-50fc-47ae-bc9c-9d15009f6e25)
 
 **Fig 1.4**
 A graph showing the data collected from all three remote sensors. The first three plots are temperature and the last three are humidity.
+
+
+
+```.py
+fig = plt.figure(figsize=(10, 8))
+grid = GridSpec(2, 4, figure=fig)
+
+box1 = fig.add_subplot(grid[0, 0])
+x, y = smoothing(x=s1['h'], size_window=12)
+plt.ylabel('Humidity (%)', fontsize=16)
+plt.title('Sensor 1')
+plt.ylim(19, 49)
+plt.plot(x, y)
+
+box2 = fig.add_subplot(grid[1, 0])
+x, y = smoothing(x=s1['temp'], size_window=12)
+plt.ylabel('Temperature (C)', fontsize=16)
+plt.ylim(16, 33)
+plt.plot(x, y)
+
+box3 = fig.add_subplot(grid[0, 1])
+x, y = smoothing(x=s2['h'], size_window=12)
+plt.plot(x, y)
+plt.title('Sensor 2')
+
+box4 = fig.add_subplot(grid[1, 1])
+x, y = smoothing(x=s2['temp'], size_window=12)
+plt.ylim(16, 33)
+plt.plot(x, y)
+
+box5 = fig.add_subplot(grid[0, 2])
+x, y = smoothing(x=s3['h'], size_window=12)
+plt.title('Sensor 3')
+plt.plot(x, y)
+
+box6 = fig.add_subplot(grid[1, 2])
+x, y = smoothing(x=s3['temp'], size_window=12)
+plt.ylim(16, 33)
+plt.plot(x, y)
+
+box7 = fig.add_subplot(grid[0, 3])
+x, y = smoothing(x=s_outside['h'], size_window=12)
+plt.title('Remote Sensor')
+plt.xlim(0, 62)
+plt.plot(x, y)
+
+box8 = fig.add_subplot(grid[1, 3])
+x, y = smoothing(x=s_outside['temp'], size_window=12)
+plt.xlim(0, 62)
+plt.plot(x, y)
+
+fig.text(0.5, 0.05, 'Time (hours)', ha='center', va='center', fontsize=16)
+plt.show()
+```
+
+**Code 1.1**
+Code for constructing the composite plot with data from all of the sensors
+
+
+
+```.py
+avg_h = []
+avg_temp = []
+for i in range(len(s1['h'])):
+    avg_h.append((s1['h'][i] + s2['h'][i] + s3['h'][i]) / 3)
+    avg_temp.append((s1['temp'][i] + s2['temp'][i] + s3['temp'][i]) / 3)
+
+
+plt.subplot(2, 1, 1)
+x, y = smoothing(x=avg_h, size_window=12)
+h_model, x1 = qmodel(x, y, 12)
+plt.plot(x, y, label='Average')
+plt.plot(x1, h_model, label='Model')
+plt.ylabel('Humidity (%)')
+plt.legend()
+plt.title('Local Average Humidity')
+
+plt.subplot(2, 1, 2)
+x, y = smoothing(x=avg_temp, size_window=12)
+temp_model = qmodel(x, y, 12)[0]
+plt.plot(x, y, label='Average')
+plt.plot(x1, temp_model, label='Model')
+plt.ylabel('Temperature (C)')
+plt.xlabel('Time (hours)')
+plt.legend()
+plt.title('Local Average Temperature')
+plt.subplots_adjust(hspace=0.5)
+
+plt.show()
+```
+
+**Code 1.2**
+Code for contructing the graph with the mean humidity and temperature from the local sensors and for creating appropriate quadratic models
+
+
+
+```.py
+def qmodel(x: list, y: list, prediction: int):
+    a, b, c = np.polyfit(x, y, 2)
+    model = []
+    future_x = x.copy()
+    for i in range(prediction):
+        future_x.append(len(future_x))
+    for i in range(len(future_x)):
+        model.append(a * (i ** 2) + b * i + c)
+    return model, future_x
+```
+
+**Code 1.3**
+Code for the qmodel function
+
+
+
+```.py
+plt.subplot(2, 1, 1)
+x, y = smoothing(x=s_outside['h'], size_window=12)
+out_h_model, x2 = qmodel(x, y, 18)
+plt.plot(x, y, label='Humidity')
+plt.plot(x2, out_h_model, label='Model')
+plt.ylabel('Humidity (%)')
+plt.legend()
+plt.title('Remote Humidity')
+
+plt.subplot(2, 1, 2)
+x, y = smoothing(x=s_outside['temp'], size_window=12)
+out_temp_model = qmodel(x, y, 18)[0]
+plt.plot(x, y, label='Temperature')
+plt.plot(x2, out_temp_model, label='Model')
+plt.ylabel('Temperature (C)')
+plt.xlabel('Time (hours)')
+plt.legend()
+plt.title('Remote Temperature')
+plt.subplots_adjust(hspace=0.5)
+plt.show()
+```
+
+**Code 1.4**
+Code for creating the graphs with the remote data and the appropriate quadratic models
+
+
 
 ## 2. The local data will be recorded using a set of 3 sensors around the dormitory.
 In order to fulfill success criterion 2 we used 3 DHT11 sensors to collect data on the room's humidity and temperature. We decided to place the first sensor near the floor next to the radiator, the second one on the table, and the third one near the ceiling next to the window. We knew that temperature tends to be lower near the floor and higher near the ceiling, so we were curious to see how the sensors would reflect that. We also wanted to see how a running radiator and open window would impact the data for sensors 1 and 3. The sensor on the table was supposed to be the average
