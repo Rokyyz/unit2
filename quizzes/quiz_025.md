@@ -57,3 +57,6 @@ plt.show()
 ```
 # 3. proof of work
 <img width="1440" alt="Screenshot 2023-12-28 at 21 23 28" src="https://github.com/Rokyyz/unit2/assets/134658259/1f32b113-2042-4971-9ab7-881ca39a3c90">
+
+<img width="1440" alt="Screenshot 2023-12-28 at 21 39 11" src="https://github.com/Rokyyz/unit2/assets/134658259/d850d8ec-ff2c-46aa-a980-435c76d75dbc">
+
