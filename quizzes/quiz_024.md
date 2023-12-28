@@ -51,6 +51,7 @@ print(f"Prediction linear model {h_future:.2f}C = {m:.2f}t + {b:.2f}")
 
 ```
 # 3. proof of work
-![Uploading Screenshot 2023-11-19 at 02.21.52.png…]()
+
+<img width="1440" alt="Screenshot 2023-12-28 at 20 38 24" src="https://github.com/Rokyyz/unit2/assets/134658259/76eb9548-512e-4ccb-a630-27c33ec93d0c">
 
 
